@@ -2,12 +2,47 @@
  * Created by mohadib on 1/29/17.
  */
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import { getAll } from '../../services/CredentialsService'
+import { Link } from 'react-router'
 
 class CredentialsList extends Component {
-   render()
-   {
-      return ( <div>Cred List</div>  );
-   }
+
+    componentWillMount()
+    {
+        this.props.getList();
+    }
+
+    render() {
+        return (
+            <div className="container">
+                <div className="page-header">
+                    <h3>Credentials</h3>
+                </div>
+
+                <ul className="list-group">
+                    {
+                        this.props.credentials.map( (cred) => {
+                            return <li className="list-group-item"><Link to="/credentials/update">{cred.name}</Link></li>
+                        })
+                    }
+                </ul>
+            </div>
+        );
+    }
 }
 
-export default CredentialsList;
+
+function mapStateToProps(state) {
+    return {
+        credentials: state.credentials.credentials,
+    };
+}
+
+function mapDispatchToProps(dispatch, state) {
+    return {
+        getList: getAll( dispatch, state )
+    };
+}
+
+export default connect( mapStateToProps, mapDispatchToProps )( CredentialsList )

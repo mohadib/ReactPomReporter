@@ -10,7 +10,7 @@ class App extends Component {
              {/* open app root */}
 
 
-             <nav className="navbar navbar-inverse navbar-fixed-top">
+             <nav className="navbar navbar-inverse">
                 <div className="container">
                    <div className="navbar-header">
                       <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -23,15 +23,15 @@ class App extends Component {
                    </div>
                    <div id="navbar" className="collapse navbar-collapse">
                       <ul className="nav navbar-nav">
-                         <li><Link to="/credentials" activeClassName="active">List</Link></li>
-                         <li><Link to="/credentials/update" activeClassName="active">Update</Link></li>
-                         <li><Link to="/credentials/create" activeClassName="active">Create</Link></li>
+                         <li><Link to="/credentials">List</Link></li>
+                         <li><Link to="/credentials/update">Update</Link></li>
+                         <li><Link to="/credentials/create">Create</Link></li>
                       </ul>
                    </div>
                 </div>
              </nav>
 
-             <div className="container" style={{paddingTop: 80 + 'px'}}>
+             <div className="container">
                 { this.props.children }
              </div>
 

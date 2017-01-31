@@ -6,9 +6,8 @@ import { applyMiddleware, createStore } from "redux"
 import logger from "redux-logger"
 import thunk from "redux-thunk"
 
-//import reducer from './reducers/Index'
-import credReducer from './reducers/CredentialReducer'
+import reducer from './reducers/Index'
 
 const middleware = applyMiddleware( thunk, logger());
 
-export default createStore(credReducer, middleware)
+export default createStore(reducer, middleware)
