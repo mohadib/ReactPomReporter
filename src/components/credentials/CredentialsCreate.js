@@ -5,13 +5,17 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Credential from '../../models/Credential'
 import {CredentialActions} from '../../actions/ActionTypes'
-import {saveActionCreator, updateActionCreator} from '../../services/CredentialsService'
+import {saveActionCreator, updateActionCreator, getOne} from '../../services/CredentialsService'
 import Alert from '../Alert'
 
 class CredentialsCreate extends Component {
 
     componentWillMount() {
-        this.props.createNew();
+        if( this.props.params.id )
+        {
+            this.props.getOne( this.props.params.id )
+        }
+        else this.props.createNew();
     }
 
     handleChange(e) {
@@ -36,9 +40,6 @@ class CredentialsCreate extends Component {
     }
 
     render() {
-        if (!this.props.credential) {
-            return (<div/>)
-        }
 
         let errorDiv = null;
         if( this.props.err )
@@ -50,6 +51,14 @@ class CredentialsCreate extends Component {
         {
             errorDiv = <Alert type="info" msg="Credentials saved" />
             setTimeout( this.props.resetAlerts, 10000)
+        }
+
+        if (!this.props.credential && !this.props.err) {
+            return (<div/>)
+        }
+        else if( !this.props.credential )
+        {
+            return errorDiv;
         }
 
 
@@ -106,6 +115,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, state) {
     return {
+        getOne: getOne( dispatch, state),
         save: saveActionCreator(dispatch, state),
         update: updateActionCreator(dispatch, state),
         createNew: () => {

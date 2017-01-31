@@ -18,7 +18,7 @@ ReactDOM.render(
             <Route path="/credentials" component={CredentialsIndex}>
                <IndexRoute component={CredentialsList}/>
                <Route path="update" component={CredentialsUpdate}/>
-               <Route path="create" component={CredentialsCreate}/>
+               <Route path="create(/:id)" component={CredentialsCreate}/>
                <Route path="list" component={CredentialsList}/>
             </Route>
          </Route>

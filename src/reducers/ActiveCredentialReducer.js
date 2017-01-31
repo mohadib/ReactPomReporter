@@ -12,6 +12,12 @@ const actionMap = Object.freeze({
     [CredentialActions.CREATE_NEW]: function( state, action ){
         return {...state, credential:action.payload, err:null, editing:false, saving:false, saved:false }
     },
+    [CredentialActions.GET_ONE_SUCCESS]: function( state, action ){
+        return {...state, credential:action.payload, err:null, editing:false, saving:false, saved:false }
+    },
+    [CredentialActions.GET_ONE_ERROR]: function( state, action ){
+        return {...state, credential:null, err:action.payload, editing:false, saving:false, saved:false }
+    },
     [CredentialActions.SAVE_ERROR]: function( state, action ){
         return {...state, err: action.payload, saving: false, saved:false }
     },
@@ -29,6 +35,7 @@ const actionMap = Object.freeze({
     [CredentialActions.RESET_ALERTS]: function( state, action ){
         return {...state, err:null, saved:false }
     }
+
 });
 
 export default function reduce( state={ credential:null, editing:false, saving:false, err: null, saved:false }, action )

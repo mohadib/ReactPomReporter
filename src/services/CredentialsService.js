@@ -36,3 +36,12 @@ export function getAll( dispatch, state ){
             .catch((err) => dispatch({ type: CredentialActions.GET_LIST_ERROR, payload: err }))
     }
 }
+
+export function getOne( dispatch, state ){
+    return (id) => {
+        dispatch({type: CredentialActions.GET_ONE_REQUEST, payload:null});
+        axios.get(urlBase + "/" + id )
+            .then((resp) => dispatch({ type: CredentialActions.GET_ONE_SUCCESS, payload: resp.data }))
+            .catch((err) => dispatch({ type: CredentialActions.GET_ONE_ERROR, payload: err }))
+    }
+}
