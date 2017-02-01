@@ -2,7 +2,7 @@
   "name": "PomReporterReact",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8180/",
+  "proxy": "http://localhost:8080/",
   "devDependencies": {
     "react-scripts": "0.8.5"
   },

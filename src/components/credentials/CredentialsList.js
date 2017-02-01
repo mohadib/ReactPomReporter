@@ -15,7 +15,7 @@ class CredentialsList extends Component {
 
     render() {
         return (
-            <div className="container">
+            <div>
                 <div className="page-header">
                     <h3>Credentials</h3>
                 </div>
@@ -23,7 +23,7 @@ class CredentialsList extends Component {
                 <ul className="list-group">
                     {
                         this.props.credentials.map( (cred) => {
-                            return <li className="list-group-item"><Link to="/credentials/update">{cred.name}</Link></li>
+                            return <li key={cred.id}className="list-group-item"><Link to={`/credentials/create/${cred.id}`} >{cred.name}</Link></li>
                         })
                     }
                 </ul>
