@@ -16,17 +16,29 @@ class CredentialsList extends Component {
     render() {
         return (
             <div>
-                <div className="page-header">
-                    <h3>Credentials</h3>
+
+                <div className="row page-header">
+                    <div className="col-xs-11">
+                        <h3>Credentials</h3>
+                    </div>
+                    <div className="col-xs-1">
+                        <Link to="/credentials/create" className="btn btn-primary">New</Link>
+                    </div>
                 </div>
 
-                <ul className="list-group">
-                    {
-                        this.props.credentials.map( (cred) => {
-                            return <li key={cred.id}className="list-group-item"><Link to={`/credentials/create/${cred.id}`} >{cred.name}</Link></li>
-                        })
-                    }
-                </ul>
+
+                <div className="row">
+                    <div className="col">
+                        <ul className="list-group">
+                            {
+                                this.props.credentials.map( (cred) => {
+                                    return <li key={cred.id}className="list-group-item"><Link to={`/credentials/create/${cred.id}`} >{cred.name}</Link></li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         );
     }
