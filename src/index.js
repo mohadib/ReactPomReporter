@@ -4,7 +4,7 @@ import {Router, Route, browserHistory, IndexRoute } from 'react-router'
 
 import CredentialsIndex from './components/credentials/CredentialsIndex'
 import CredentialsCreate from './components/credentials/CredentialsCreate'
-import CredList from './components/credentials/CredList'
+import CredentialList from './components/credentials/CredentialsList'
 
 import App from './App';
 import store from './store'
@@ -16,9 +16,9 @@ ReactDOM.render(
       <Router history={ browserHistory }>
          <Route path="/" component={App}>
             <Route path="/credentials" component={CredentialsIndex}>
-               <IndexRoute component={CredList} />
+               <IndexRoute component={CredentialList} />
                <Route path="create(/:id)" component={CredentialsCreate}/>
-               <Route path="list" component={CredList}/>
+               <Route path="list" component={CredentialList}/>
             </Route>
          </Route>
       </Router>

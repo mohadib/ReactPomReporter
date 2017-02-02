@@ -4,8 +4,10 @@
 import {combineReducers} from "redux"
 import credReducer from './CredentialReducer'
 import activeCredReducer from './ActiveCredentialReducer'
+import alertsReducer from './AlertsReducer'
 
 export default combineReducers({
-    credentials: credReducer,
-    active: activeCredReducer
+   credentials: credReducer,
+   active: activeCredReducer,
+   alerts: alertsReducer
 })

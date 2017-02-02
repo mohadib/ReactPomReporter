@@ -18,7 +18,6 @@ class Alert extends Component {
     {
         return (
             <div className={this.getClass()} role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"/>
                 {this.props.msg}
             </div>
         )

@@ -17,3 +17,10 @@ export const CredentialActions = Object.freeze({
    GET_ONE_SUCCESS: 'CREDENTIAL_GET_ONE_SUCCESS',
    GET_ONE_ERROR: 'CREDENTIAL_GET_ONE_ERROR',
 });
+
+
+export const AlertActions = Object.freeze({
+   NEW_ALERT: 'NEW_ALERT',
+   CLEAR_ALERTS: 'CLEAR_ALERTS',
+   CLEAR_ALERT: 'CLEAR_ALERT'
+});
