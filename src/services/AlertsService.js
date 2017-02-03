@@ -1,14 +1,15 @@
 import { AlertActions } from '../actions/ActionTypes'
 
-export function newErrorAlert( dispatch, state )
+export function newErrorAlert( msg )
 {
-   return (msg)=> {
-      dispatch({ type:AlertActions.NEW_ALERT, payload:{
+   return {
+      type: AlertActions.NEW_ALERT,
+      payload: {
          id: Math.random(),
          type: 'error',
          msg: msg
-      }})
-   }
+      }
+   };
 }
 
 export function newInfomationAlert( msg) {

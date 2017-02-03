@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router'
-import {projectService} from '../../services/EntityServices';
+import {projectGroupService} from '../../services/EntityServices';
 import GenericListComponent from '../GenericListComponent'
 
-class ProjectList extends Component {
+class ProjectGroupList extends Component {
 
    componentWillMount()
    {
@@ -18,7 +18,7 @@ class ProjectList extends Component {
 
             <div className="row page-header">
                <div className="col-xs-11">
-                  <h3>Projects</h3>
+                  <h3>Project Groups</h3>
                </div>
                <div className="col-xs-1">
                   <Link to="/projects/create" className="btn btn-primary">New</Link>
@@ -29,10 +29,10 @@ class ProjectList extends Component {
             <div className="row">
                <div className="col">
                   <GenericListComponent
-                     items={this.props.projects}
+                     items={this.props.projectGroups}
                      keyattr="id"
                      display="name"
-                     linkto="/projects/create/"
+                     linkto="/projectgroups/create/"
                   />
                </div>
             </div>
@@ -46,15 +46,15 @@ class ProjectList extends Component {
 function mapStateToProps(state)
 {
    return {
-      projects: state.projects.projects,
+      projectGroups: state.projectgroups.projectgroups,
    };
 }
 
 function mapDispatchToProps(dispatch, state)
 {
    return {
-      getList: projectService.getAll(dispatch, state)
+      getList: projectGroupService.getAll(dispatch, state)
    };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectList)
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectGroupList)

@@ -19,7 +19,7 @@ class App extends Component
             setTimeout( function(){
                clearAlert(alert.id)
             }, 5000);
-            return <div key={alert.id}><Alert error={alert.type} msg={alert.msg}/></div>
+            return <div key={alert.id}><Alert type={alert.type} msg={alert.msg}/></div>
          } )
 
          return lis
@@ -51,6 +51,8 @@ class App extends Component
                   <div id="navbar" className="navbar-collapse collapse">
                      <ul className="nav navbar-nav">
                         <li><Link to="/credentials" activeClassName="active">Credentials</Link></li>
+                        <li><Link to="/projects" activeClassName="active">Projects</Link></li>
+                        <li><Link to="/projectgroups" activeClassName="active">Project Groups</Link></li>
                      </ul>
                   </div>
                </div>

@@ -1,6 +1,3 @@
-/**
- * Created by mohadib on 1/30/17.
- */
 class Credential {
 
    constructor()

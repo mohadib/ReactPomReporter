@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Credential from '../../models/Credential'
 import {CredentialActions} from '../../actions/ActionTypes'
-import {saveActionCreator, updateActionCreator, getOne} from '../../services/CredentialsService'
+import {credentialsService} from '../../services/EntityServices'
 import {Link} from 'react-router'
 
 class CredentialsCreate extends Component {
@@ -110,7 +110,7 @@ class CredentialsCreate extends Component {
                </div>
 
                <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
-               <Link to="/credentials/list" className="btn btn-info">Cancel</Link>
+               <Link to="/credentials" className="btn btn-info">Cancel</Link>
             </div>
          </div>
       );
@@ -132,9 +132,9 @@ function mapDispatchToProps(dispatch, state)
 {
    return {
       clearAll: () => dispatch({type: CredentialActions.CLEAR_ALL, payload: null}),
-      getOne: getOne(dispatch, state),
-      save: saveActionCreator(dispatch, state),
-      update: updateActionCreator(dispatch, state),
+      getOne: credentialsService.getOne(dispatch, state),
+      save: credentialsService.saveAction(dispatch, state),
+      update: credentialsService.updateAction(dispatch, state),
       createNew: () =>
       {
          dispatch({type: CredentialActions.CREATE_NEW, payload: new Credential()})

@@ -3,8 +3,8 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getAll} from '../../services/CredentialsService'
 import {Link} from 'react-router'
+import { credentialsService } from '../../services/EntityServices'
 import GenericListComponent from '../GenericListComponent'
 
 class CredentialsList extends Component {
@@ -56,7 +56,7 @@ function mapStateToProps(state)
 function mapDispatchToProps(dispatch, state)
 {
    return {
-      getList: getAll(dispatch, state)
+      getList: credentialsService.getAll(dispatch, state)
    };
 }
 
