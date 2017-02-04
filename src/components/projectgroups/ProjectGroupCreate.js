@@ -4,6 +4,7 @@ import { projectService, projectGroupService} from '../../services/EntityService
 import {ProjectGroupActions} from '../../actions/ActionTypes'
 import ProjectGroup from '../../models/ProjectGroup'
 import {Link} from 'react-router'
+import Title from '../Title'
 
 class ProjectCreate extends Component {
 
@@ -45,6 +46,15 @@ class ProjectCreate extends Component {
       }
    }
 
+
+   handleDelete()
+   {
+      if( confirm("Are you sure "))
+      {
+         this.props.delete(this.props.projectgroup.id);
+      }
+   }
+
    componentWillUnmount()
    {
       this.props.clearAll();
@@ -57,37 +67,32 @@ class ProjectCreate extends Component {
 
       if( e.target.type === 'checkbox')
       {
-         let pid = parseInt(e.target.value, 10);
-         if( e.target.checked )
+
+         if( e.target.id === 'isDefault')
          {
-            // remove just incase :S
-            projectgroup.projects = projectgroup.projects.filter(function(proj){ return proj.id !== pid });
-            //now add new one
-            projectgroup.projects.push(this.props.projects.find( function(proj){  return proj.id === pid  }));
+            projectgroup.isDefault = e.target.checked
          }
-         else
-         {
-            projectgroup.projects = projectgroup.projects.filter(function(proj){ return proj.id !== pid })
+         else {
+
+            let pid = parseInt(e.target.value, 10);
+            if (e.target.checked) {
+               // remove just incase :S
+               projectgroup.projects = projectgroup.projects.filter(function (proj) {
+                  return proj.id !== pid
+               });
+               //now add new one
+               projectgroup.projects.push(this.props.projects.find(function (proj) {
+                  return proj.id === pid
+               }));
+            }
+            else {
+               projectgroup.projects = projectgroup.projects.filter(function (proj) {
+                  return proj.id !== pid
+               })
+            }
          }
       }
-
-      /*
-      if(e.target.id === 'credentials')
-      {
-         let targetValue = parseInt(e.target.value, 10);
-
-         if( targetValue ===  -1)
-         {
-            project.credentials = null;
-         }
-         else
-         {
-
-            project.credentials = this.props.credentials.find(function(cred){ return cred.id === targetValue})
-         }
-      }
-      else*/
-      projectgroup[e.target.id] = e.target.value;
+      else projectgroup[e.target.id] = e.target.value;
 
       this.props.propertyUpdated(projectgroup);
    }
@@ -118,13 +123,21 @@ class ProjectCreate extends Component {
 
       return (
          <div onChange={this.handleChange.bind(this) }>
-            <div className="page-header">
-               <h3>{title}</h3>
-            </div>
+
+            <Title title={title} buttons={[{ name:'Delete', action:this.handleDelete.bind(this) }] }/>
 
             <div className="form-group">
                <label>Name</label>
                <input className="form-control" type="text" value={this.props.projectgroup.name} id="name"/>
+            </div>
+
+            <div className="form-group">
+               <div className="checkbox">
+                  <label>
+                     <input type="checkbox" id='isDefault' checked={this.props.projectgroup.isDefault}/>
+                     Make Default
+                  </label>
+               </div>
             </div>
 
             <div className="form-group">
@@ -144,11 +157,11 @@ class ProjectCreate extends Component {
 function mapStateToProps(state)
 {
    return {
-      projectgroup: state.activeProjectGroup.projectgroup,
-      err: state.activeProjectGroup.err,
-      saved: state.activeProjectGroup.saved,
-      existing: state.activeProjectGroup.projectgroup && state.activeProjectGroup.projectgroup.id,
-      projects: state.projects.projects
+      projectgroup: state.projectgroups.projectgroup,
+      err: state.projectgroups.err,
+      saved: state.projectgroups.saved,
+      existing: state.projectgroups.projectgroup && state.projectgroups.projectgroup.id,
+      projects: state.projects.list.projects
    };
 }
 
@@ -159,6 +172,7 @@ function mapDispatchToProps( dispatch, state )
       getOne: projectGroupService.getOne( dispatch, state),
       save: projectGroupService.saveAction(dispatch, state),
       update: projectGroupService.updateAction(dispatch, state),
+      delete: projectGroupService.deleteAction(dispatch, state),
       createNew: () =>
       {
          dispatch({type: ProjectGroupActions.CREATE_NEW, payload: new ProjectGroup()})

@@ -7,7 +7,7 @@ class Project {
       this.credentials=undefined;
       this.path="";
       this.xpathExpression="";
-      this.info=undefined;
+      this.svnInfo=undefined;
    }
 
    copy( other )
@@ -17,7 +17,7 @@ class Project {
       this.credentials=other.credentials;
       this.path=other.path;
       this.xpathExpression=other.xpathExpression;
-      this.info=other.info;
+      this.svnInfo=other.svnInfo;
       return this
    }
 

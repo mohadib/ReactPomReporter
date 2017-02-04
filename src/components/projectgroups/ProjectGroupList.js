@@ -21,7 +21,7 @@ class ProjectGroupList extends Component {
                   <h3>Project Groups</h3>
                </div>
                <div className="col-xs-1">
-                  <Link to="/projects/create" className="btn btn-primary">New</Link>
+                  <Link to="/projectgroups/create" className="btn btn-primary">New</Link>
                </div>
             </div>
 
@@ -46,7 +46,7 @@ class ProjectGroupList extends Component {
 function mapStateToProps(state)
 {
    return {
-      projectGroups: state.projectgroups.projectgroups,
+      projectGroups: state.projectgroups.list.projectgroups,
    };
 }
 

@@ -4,6 +4,26 @@ import { newInfomationAlert, newErrorAlert } from './AlertsService'
 
 export default function (urlBase, actionTypes, createFn )
 {
+
+   function deleteAction( dispatch, state )
+   {
+      return function( id )
+      {
+         console.log('delete action called in rest ' + urlBase);
+         dispatch({ type: actionTypes.DELETE_REQUEST, payload: id });
+         axios.delete( urlBase + "/" + id )
+         .then( (resp)=> {
+            dispatch({ type: actionTypes.DELETE_SUCCESS, payload: id });
+            dispatch( newInfomationAlert('Entity deleted') );
+            browserHistory.push(urlBase)
+         })
+         .catch( (err)=> {
+            dispatch({type: actionTypes.DELETE_ERROR, payload: err});
+            dispatch( newErrorAlert(err.response.data.msg));
+         });
+      }
+   }
+
    function saveAction( dispatch, state )
    {
       return function( entity )
@@ -74,7 +94,8 @@ export default function (urlBase, actionTypes, createFn )
       saveAction: saveAction,
       updateAction: updateAction,
       getAll: getAll,
-      getOne: getOne
+      getOne: getOne,
+      deleteAction: deleteAction
    });
 }
 

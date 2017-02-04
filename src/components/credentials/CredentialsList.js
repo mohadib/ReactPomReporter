@@ -49,7 +49,7 @@ class CredentialsList extends Component {
 function mapStateToProps(state)
 {
    return {
-      credentials: state.credentials.credentials,
+      credentials: state.credentials.list.credentials,
    };
 }
 

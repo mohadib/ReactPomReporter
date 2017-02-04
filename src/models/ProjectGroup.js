@@ -5,6 +5,7 @@ class ProjectGroup
       this.id = "";
       this.name = "";
       this.projects = [];
+      this.isDefault = false;
    }
 
    isValid()
@@ -16,7 +17,8 @@ class ProjectGroup
    {
       this.id = other.id;
       this.name = other.name;
-      this.projects = other.projects;
+      this.projects = (other.projects === null || other.projects === undefined ) ? [] : other.projects;
+      this.isDefault = other.isDefault;
       return this;
    }
 }

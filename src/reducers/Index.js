@@ -1,21 +1,14 @@
-/**
- * Created by mohadib on 1/30/17.
- */
 import {combineReducers} from "redux"
-import credReducer from './CredentialReducer'
-import activeCredReducer from './ActiveCredentialReducer'
+import { CredentialActions, ProjectActions, ProjectGroupActions } from '../actions/ActionTypes'
+import crudReducer from './CrudReducer'
 import alertsReducer from './AlertsReducer'
-import projectReducer from './ProjectsReducer'
-import activeProjectReducer from './ActiveProjectReducer'
-import projectGroupsReducer from './ProjectGroupsReducer'
-import activeProjectGroupReducer from './ActiveProjectGroupReducer'
+import displayedGroupReducer from './DisplayedGroupReducer'
+
 
 export default combineReducers({
-   credentials: credReducer,
-   active: activeCredReducer,
+   credentials: crudReducer('Credential', 'Credentials', CredentialActions),
+   projects: crudReducer('Project', 'Projects', ProjectActions),
+   projectgroups: crudReducer('ProjectGroup', 'ProjectGroups', ProjectGroupActions),
+   displayedgroup: displayedGroupReducer,
    alerts: alertsReducer,
-   projects: projectReducer,
-   activeProject: activeProjectReducer,
-   projectgroups: projectGroupsReducer,
-   activeProjectGroup: activeProjectGroupReducer
 })

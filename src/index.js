@@ -14,6 +14,8 @@ import ProjectCreate from './components/projects/ProjectCreate'
 import ProjectGroupList from './components/projectgroups/ProjectGroupList'
 import ProjectGroupCreate from './components/projectgroups/ProjectGroupCreate'
 
+import VersionsIndex from './components/versions/VersionsIndex'
+
 import App from './App';
 import store from './store'
 
@@ -23,6 +25,7 @@ ReactDOM.render(
    <Provider store={store}>
       <Router history={ browserHistory }>
          <Route path="/" component={App}>
+            <IndexRoute component={VersionsIndex}/>
             <Route path="/credentials" component={Index}>
                <IndexRoute component={CredentialList} />
                <Route path="create(/:id)" component={CredentialsCreate}/>

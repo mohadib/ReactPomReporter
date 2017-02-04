@@ -46,7 +46,7 @@ class ProjectList extends Component {
 function mapStateToProps(state)
 {
    return {
-      projects: state.projects.projects,
+      projects: state.projects.list.projects,
    };
 }
 

@@ -130,11 +130,11 @@ class ProjectCreate extends Component {
 function mapStateToProps(state)
 {
    return {
-      project: state.activeProject.project,
-      err: state.activeProject.err,
-      saved: state.activeProject.saved,
-      existing: state.activeProject.project && state.activeProject.project.id,
-      credentials: state.credentials.credentials
+      project: state.projects.project,
+      err: state.projects.err,
+      saved: state.projects.saved,
+      existing: state.projects.project && state.projects.project.id,
+      credentials: state.credentials.list.credentials
    };
 }
 

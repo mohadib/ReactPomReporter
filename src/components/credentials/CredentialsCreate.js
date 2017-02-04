@@ -1,6 +1,3 @@
-/**
- * Created by mohadib on 1/29/17.
- */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Credential from '../../models/Credential'
@@ -121,10 +118,10 @@ class CredentialsCreate extends Component {
 function mapStateToProps(state)
 {
    return {
-      credential: state.active.credential,
-      err: state.active.err,
-      saved: state.active.saved,
-      existing: state.active.credential && state.active.credential.id
+      credential: state.credentials.credential,
+      err: state.credentials.err,
+      saved: state.credentials.saved,
+      existing: state.credentials.credential && state.credentials.credential.id
    };
 }
 
