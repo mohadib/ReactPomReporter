@@ -12,7 +12,7 @@ class ProjectGroupDisplay extends Component
                { this.props.projectgroup.projects.map( ( project )=> {
                   if( !project.svnInfo)
                   {
-                     return <div>Loading</div>
+                     return <div key={project.id}>Loading</div>
                   }
                   return <InfoDisplay key={project.id} project={ project } />
                })}

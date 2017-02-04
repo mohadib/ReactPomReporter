@@ -62,17 +62,19 @@ class CredentialsCreate extends Component {
 
       if (!this.props.credential && !this.props.err)
       {
-         return <div>Loading</div>
+         return null;
       }
 
-      let title = this.props.existing ? ("Editing " + this.props.credential.name) : "Creating New Credential"
+      let title = this.props.existing ? ("Editing Credential " + this.props.credential.name) : "Creating New Credential"
 
       return (
 
          <div>
-            <div className="page-header">
-               <h3>{title}</h3>
+
+            <div className="pomPageHeader">
+               <h3 >{title}</h3>
             </div>
+
             <div onChange={this.handleChange.bind(this) }>
 
 
@@ -106,8 +108,12 @@ class CredentialsCreate extends Component {
                          id="password"/>
                </div>
 
-               <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
-               <Link to="/credentials" className="btn btn-info">Cancel</Link>
+               <div>
+                  <span className="pull-right">
+                     <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
+                     <Link to="/credentials" className="btn btn-info" style={{marginLeft:'5px'}}>Cancel</Link>
+                  </span>
+               </div>
             </div>
          </div>
       );

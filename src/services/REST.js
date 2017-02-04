@@ -2,6 +2,8 @@ import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { newInfomationAlert, newErrorAlert } from './AlertsService'
 
+axios.defaults.baseURL = '/api'
+
 export default function (urlBase, actionTypes, createFn )
 {
 

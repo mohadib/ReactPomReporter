@@ -16,13 +16,11 @@ class ProjectList extends Component {
       return(
          <div>
 
-            <div className="row page-header">
-               <div className="col-xs-11">
-                  <h3>Projects</h3>
-               </div>
-               <div className="col-xs-1">
+            <div className="pomPageHeader">
+               <h3 >Projects</h3>
+               <span>
                   <Link to="/projects/create" className="btn btn-primary">New</Link>
-               </div>
+               </span>
             </div>
 
 

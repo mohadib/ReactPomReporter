@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router'
+import {Link } from 'react-router'
 import { credentialsService } from '../../services/EntityServices'
 import GenericListComponent from '../GenericListComponent'
 
@@ -19,15 +19,12 @@ class CredentialsList extends Component {
       return (
          <div>
 
-            <div className="row page-header">
-               <div className="col-xs-11">
-                  <h3>Credentials</h3>
-               </div>
-               <div className="col-xs-1">
+            <div className="pomPageHeader">
+               <h3 >Credentials</h3>
+               <span>
                   <Link to="/credentials/create" className="btn btn-primary">New</Link>
-               </div>
+               </span>
             </div>
-
 
             <div className="row">
                <div className="col">

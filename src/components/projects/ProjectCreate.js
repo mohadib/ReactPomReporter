@@ -78,7 +78,7 @@ class ProjectCreate extends Component {
    {
       if (!this.props.project && !this.props.err)
       {
-         return <div>Loading</div>
+         return null;
       }
 
       let title = this.props.existing ? ("Editing " + this.props.project.name) : "Creating New Project"
@@ -92,8 +92,9 @@ class ProjectCreate extends Component {
 
       return (
             <div onChange={this.handleChange.bind(this) }>
-               <div className="page-header">
-                  <h3>{title}</h3>
+
+               <div className="pomPageHeader">
+                  <h3 >{title}</h3>
                </div>
 
                <div className="form-group">
@@ -118,9 +119,12 @@ class ProjectCreate extends Component {
                   </select>
                </div>
 
-
-               <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
-               <Link to="/projects" className="btn btn-info">Cancel</Link>
+               <div>
+                  <span className="pull-right">
+                     <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
+                     <Link to="/projects" className="btn btn-info" style={{marginLeft:'5px'}}>Cancel</Link>
+                  </span>
+               </div>
 
             </div>
       );

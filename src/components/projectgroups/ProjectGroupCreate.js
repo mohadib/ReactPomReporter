@@ -4,7 +4,6 @@ import { projectService, projectGroupService} from '../../services/EntityService
 import {ProjectGroupActions} from '../../actions/ActionTypes'
 import ProjectGroup from '../../models/ProjectGroup'
 import {Link} from 'react-router'
-import Title from '../Title'
 
 class ProjectCreate extends Component {
 
@@ -102,7 +101,7 @@ class ProjectCreate extends Component {
    {
       if (!this.props.projectgroup && !this.props.err)
       {
-         return <div>Loading</div>
+         return null;
       }
 
       let title = this.props.existing ? ("Editing " + this.props.projectgroup.name) : "Creating New Project Group"
@@ -124,7 +123,15 @@ class ProjectCreate extends Component {
       return (
          <div onChange={this.handleChange.bind(this) }>
 
-            <Title title={title} buttons={[{ name:'Delete', action:this.handleDelete.bind(this) }] }/>
+            <div className="pomPageHeader">
+               <h3>{title}</h3>
+               { this.props.existing &&
+                  <span>
+                     <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
+                  </span>
+               }
+            </div>
+
 
             <div className="form-group">
                <label>Name</label>
@@ -145,9 +152,12 @@ class ProjectCreate extends Component {
                {projects}
             </div>
 
-
-            <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
-            <Link to="/projectgroups" className="btn btn-info">Cancel</Link>
+            <div>
+               <span className="pull-right">
+                  <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
+                  <Link to="/projectgroups" className="btn btn-info" style={{marginLeft:'5px'}}>Cancel</Link>
+               </span>
+            </div>
 
          </div>
       );
