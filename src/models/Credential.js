@@ -16,12 +16,12 @@ class Credential {
       let valid =
          this.name.length > 0 &&
          this.username.length > 0 &&
+         !!this.password &&
          this.password.length > 0 &&
          this.protocol.length > 0 &&
          this.host.length > 0 &&
          (!isNaN(parseFloat(this.port)) && isFinite(this.port)) && this.port > 0;
       return valid;
-
    }
 
    copy( other )

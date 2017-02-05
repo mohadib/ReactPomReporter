@@ -21,10 +21,10 @@ class VersionsIndex extends Component {
          {
             this.props.select( def );
          }
+         else return <div>Set up a default project group or use group selector.</div>
       }
       else
       {
-         if(!group) return <div>Set up a default Project Group</div>
          return <ProjectGroupDisplay projectgroup={group}/>
       }
    }

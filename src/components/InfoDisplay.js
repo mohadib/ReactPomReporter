@@ -2,6 +2,11 @@ import React, {Component} from 'react';
 
 class InfoDisplay extends Component
 {
+   formatDate(info)
+   {
+      return new Date(info.lastUpdated).toLocaleDateString();
+   }
+
    render()
    {
       let project = this.props.project;
@@ -15,6 +20,7 @@ class InfoDisplay extends Component
 
             <div><h3>{project.name}</h3></div>
             <div><b>Api Version: {info.xpathResult}</b></div>
+            <div>Last Checked: { this.formatDate(info)}</div>
             <div>Svn Version: {info.svnRevision}</div>
             <div>URL: <a target="_new" href={info.projectUrl}>{info.projectUrl}</a></div>
 

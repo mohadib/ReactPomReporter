@@ -56,6 +56,29 @@ class CredentialsCreate extends Component {
       }
    }
 
+   handleDelete()
+   {
+      if( confirm("Are you sure "))
+      {
+         this.props.delete(this.props.credential.id);
+      }
+   }
+
+   getSaveButtonClasses()
+   {
+      if( this.props.credential === null )
+      {
+         return '';
+      }
+
+      let classes = 'btn btn-primary';
+      if( !this.props.credential.isValid() )
+      {
+         classes += ' disabled';
+      }
+      return classes;
+   }
+
    render()
    {
 
@@ -73,6 +96,11 @@ class CredentialsCreate extends Component {
 
             <div className="pomPageHeader">
                <h3 >{title}</h3>
+               { this.props.existing &&
+                  <span>
+                     <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
+                  </span>
+               }
             </div>
 
             <div onChange={this.handleChange.bind(this) }>
@@ -110,7 +138,7 @@ class CredentialsCreate extends Component {
 
                <div>
                   <span className="pull-right">
-                     <button className="btn btn-primary" onClick={this.handleSave.bind(this) }>Save</button>
+                     <button className={this.getSaveButtonClasses()} onClick={this.handleSave.bind(this) }>Save</button>
                      <Link to="/credentials" className="btn btn-info" style={{marginLeft:'5px'}}>Cancel</Link>
                   </span>
                </div>
@@ -138,6 +166,7 @@ function mapDispatchToProps(dispatch, state)
       getOne: credentialsService.getOne(dispatch, state),
       save: credentialsService.saveAction(dispatch, state),
       update: credentialsService.updateAction(dispatch, state),
+      delete: credentialsService.deleteAction(dispatch, state),
       createNew: () =>
       {
          dispatch({type: CredentialActions.CREATE_NEW, payload: new Credential()})

@@ -73,6 +73,14 @@ class ProjectCreate extends Component {
       this.props.propertyUpdated(project);
    }
 
+   handleDelete()
+   {
+      if( confirm("Are you sure "))
+      {
+         this.props.delete(this.props.project.id);
+      }
+   }
+
 
    render()
    {
@@ -95,6 +103,11 @@ class ProjectCreate extends Component {
 
                <div className="pomPageHeader">
                   <h3 >{title}</h3>
+                  { this.props.existing &&
+                  <span>
+                     <button className="btn btn-danger" onClick={this.handleDelete.bind(this)}>Delete</button>
+                  </span>
+                  }
                </div>
 
                <div className="form-group">
@@ -150,6 +163,7 @@ function mapDispatchToProps( dispatch, state )
       getAllCreds: credentialsService.getAll(dispatch, state),
       save: projectService.saveAction(dispatch, state),
       update: projectService.updateAction(dispatch, state),
+      delete: projectService.deleteAction(dispatch, state),
       createNew: () =>
       {
          dispatch({type: ProjectActions.CREATE_NEW, payload: new Project()})
