@@ -11,7 +11,12 @@ class InfoDisplay extends Component
    {
       let project = this.props.project;
       let info = project.svnInfo;
-      let entries = info.logEntries.split("<EOL>").filter((e)=> e.trim().length>0);
+      let rawLogs = info.logEntries;
+      let entries = '';
+      if( rawLogs )
+      {
+         entries = rawLogs.split("<EOL>").filter((e)=> e.trim().length>0);
+      }
       let x = 1;
 
       return (
