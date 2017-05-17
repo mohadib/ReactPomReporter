@@ -16,7 +16,7 @@ class VersionsIndex extends Component {
       let group = this.props.selectedGroup;
       if(!group)
       {
-         let def = this.props.projectGroups.find((pg) => pg.isDefault)
+         let def = this.props.projectGroups.find((pg) => pg.isDefault);
          if( def )
          {
             this.props.select( def );

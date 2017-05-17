@@ -10,7 +10,7 @@ class ProjectGroupDisplay extends Component
             <h2>{this.props.projectgroup.name}</h2>
             <div className="list-group">
                { this.props.projectgroup.projects.map( ( project )=> {
-                  if( !project.svnInfo)
+                  if( !project.projectInfo)
                   {
                      return <div key={project.id}>No SVN info for {project.name} yet.</div>
                   }

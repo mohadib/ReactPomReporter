@@ -21,7 +21,7 @@ class App extends Component
                clearAlert(alert.id)
             }, 5000);
             return <div key={alert.id}><Alert type={alert.type} msg={alert.msg}/></div>
-         } )
+         } );
 
          return lis
       }
