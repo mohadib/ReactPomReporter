@@ -89,12 +89,12 @@ class ProjectCreate extends Component {
          return null;
       }
 
-      let title = this.props.existing ? ("Editing " + this.props.project.name) : "Creating New Project"
+      let title = this.props.existing ? ("Editing " + this.props.project.name) : "Creating New Project";
 
 
       let creds = this.props.credentials.map( (cred) => {
          return <option key={cred.id} value={cred.id} >{cred.name}</option>
-      }).concat(<option key='-1' value='-1' >Please select..</option>)
+      }).concat(<option key='-1' value='-1' >Please select..</option>);
 
       let selectedCred = this.props.project.credentials ? this.props.project.credentials.id : -1;
 
@@ -116,8 +116,13 @@ class ProjectCreate extends Component {
                </div>
 
                <div className="form-group">
-                  <label>Path</label>
-                  <input className="form-control" type="text" value={this.props.project.path} id="path"/>
+                  <label>URL</label>
+                  <input className="form-control" type="text" value={this.props.project.url} id="url"/>
+               </div>
+
+               <div className="form-group">
+                  <label>Branch</label>
+                  <input className="form-control" type="text" value={this.props.project.branch} id="branch"/>
                </div>
 
                <div className="form-group">

@@ -31,7 +31,7 @@ class VersionsIndex extends Component {
 
    handleClick(e)
    {
-      const gid = parseInt(e.target.id, 10)
+      const gid = parseInt(e.target.id, 10);
       this.props.select(  this.props.projectGroups.find((pg) => pg.id === gid) )
    }
 
@@ -53,8 +53,8 @@ class VersionsIndex extends Component {
 
                 <span className="dropdown pull-right" style={{marginTop:'20px'}}>
                    <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      Select Group &nbsp;&nbsp;
-                      <span className="caret"></span>
+                      Select Group
+                      <span className="caret" style={{marginLeft: '20px'}}/>
                    </button>
                    <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                       {

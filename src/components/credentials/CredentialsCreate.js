@@ -110,21 +110,7 @@ class CredentialsCreate extends Component {
                   <label>Name</label>
                   <input className="form-control" type="text" value={this.props.credential.name} id="name"/>
                </div>
-               <div className="form-group">
-                  <label>Protocol</label>
-                  <select className="form-control" value={this.props.credential.protocol} id="protocol">
-                     <option>http</option>
-                     <option>https</option>
-                  </select>
-               </div>
-               <div className="form-group">
-                  <label>Host</label>
-                  <input className="form-control" type="text" value={this.props.credential.host} id="host"/>
-               </div>
-               <div className="form-group">
-                  <label>Port</label>
-                  <input className="form-control" type="text" value={this.props.credential.port} id="port"/>
-               </div>
+
                <div className="form-group">
                   <label>Username</label>
                   <input className="form-control" type="text" value={this.props.credential.username}
